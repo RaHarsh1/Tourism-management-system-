@@ -1,0 +1,75 @@
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
+
+const AdminDashboard = () => {
+  return (
+    <div className="container-fluid">
+      <div className="row g-0 ">
+        <div className="col-3 col-md-2 bg-light min-vh-100 d-flex flex-column p-3 sticky">
+          <h5>Admin Menu</h5>
+
+          <ul className="nav flex-column">
+            <li className="nav-item">
+              <Link className="nav-link" to="">
+                Dashboard
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="custmer">
+                Manage Users
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="manage-package">
+                Manage Packages
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="manage-bus">
+                Manage Buses
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="manage-routes">
+                Manage Routes
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="manage-staff">
+                Manage Staff
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="bookings">
+                Manage Bookings
+              </Link>
+            </li>
+          </ul>
+
+          <button
+            className="btn btn-danger w-50 mt-auto align-self-center"
+            onClick={() => {
+              localStorage.removeItem("token");
+              localStorage.removeItem("role");
+              window.location.href = "/login";
+            }}
+          >
+            Logout
+          </button>
+        </div>
+
+        <div className="col-9 col-md-10 p-5 bg-white">
+          <Outlet />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AdminDashboard;
